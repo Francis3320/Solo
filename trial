@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>.color-myblue{background-color:#031633!important}.color-mylightblue{color:#000!important;background-color:#6ea8fe!important}.btn-check:active+.btn-outline-myblue,.btn-check:checked+.btn-outline-myblue,.btn-outline-myblue.active,.btn-outline-myblue:active,.btn-outline-primary.dropdown-toggle.show{color:#fff!important;background-color:#031633!important;border-color:#031633!important}.btn-outline-myblue{color:#031633!important;border-color:#031633!important}.btn-check:active+.btn-outline-mylightblue,.btn-check:checked+.btn-outline-mylightblue,.btn-outline-mylightblue.active,.btn-outline-mylightblue:active,.btn-outline-primary.dropdown-toggle.show{color:#000!important;background-color:#6ea8fe!important;border-color:#6ea8fe}.btn-outline-mylightblue{color:#000;border-color:#6ea8fe}.row{margin:0!important;padding-top:15px!important;padding-bottom:15px!important}</style>
+
+    <div class="container py-5 px-0" style="max-width: 920px;">
+        <div class="text-center">
+            <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group" style="max-width: 600px;">
+                <input type="radio" class="btn-check" name="radio1" id="bathFloor" autocomplete="off">
+                <label class="btn btn-outline-myblue" for="bathFloor">Bathroom Floor only</label>
+              
+                <input type="radio" class="btn-check" name="radio1" id="bathShower" autocomplete="off">
+                <label class="btn btn-outline-myblue" for="bathShower">Bathroom Shower only</label>
+              
+                <input type="radio" class="btn-check" name="radio1" id="bathShower&Floor" autocomplete="off">
+                <label class="btn btn-outline-myblue" for="bathShower&Floor">Bathroom Shower & Floor only</label>
+    
+                <input type="radio" class="btn-check" name="radio1" id="fullBath" autocomplete="off" checked>
+                <label class="btn btn-outline-myblue" for="fullBath">Full Bathroom Remodel</label>
+            </div>
+        </div>
+
+
+        <!-- Floor  -->
+        <section id="floor" class="bg-light px-3 rounded">
+            <h2 class="py-3">Floor</h3>
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Bathroom Floor Total square footage</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <input type="number" class="form-control" name="floorfootage" id="floorfootage" value="0">
+                </div>
+            </div>
+
+            <!-- output  -->
+            <div class="row align-items-center py-2" style="display: none;">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="">Bathroom Floor Price</label>
+                    <p class="fw-bold" id="bathFloorPrice">0</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="">Prepping Material Cost</label>
+                    <p class="fw-bold" id="bathPrepPrice">0</p>
+                </div>
+            </div>
+
+            <!-- tile pattern  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Tile Pattern</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="tilePattern" id="tilePattern">
+                        <option value="0" selected>Standard - 50/50 or straight</option>
+                        <option value="17">Advanced -Diagonal, Vertical Stack, or Mixed </option>
+                        <option value="28">Complex - Herringbone or Modular</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- tile size  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Tile Size</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="tileSize" id="tileSize">
+                        <option value="0" selected>Standard - 12x12 or 12x24</option>
+                        <option value="17">Level 2 - Large Planks or Subway Tile</option>
+                        <option value="28">Level 3 - 48x48 and Larger or Mosaic </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- remove old floring  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Do you need us to remove your old flooring?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio2" id="removeOldYes" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="removeOldYes">Yes</label>
+                      
+                        <input type="radio" class="btn-check" name="radio2" id="removeOldNo" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="removeOldNo">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- output floor removal price -->
+            <div class="row align-items-center py-2" id="floorRemovalPriceDiv">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="">Floor Removal Price</label>
+                    <p class="fw-bold" id="floorRemovalPrice">0</p>
+                </div>
+            </div>
+
+            <!-- Surface Foundry  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Will Surface Foundry be providing the tile?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio3" id="foundaryProvideYes" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="foundaryProvideYes">Yes</label>
+                      
+                        <input type="radio" class="btn-check" name="radio3" id="foundaryProvideNo" autocomplete="off" >
+                        <label class="btn btn-outline-dark" for="foundaryProvideNo">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- tile type  -->
+            <div class="row align-items-center py-2" id="tileTypeDiv">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Tile Type</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="tileType" id="tileType">
+                        <option value="4" selected>Budget Tile</option>
+                        <option value="6">Standard Tile</option>
+                        <option value="8">Luxury Tile</option>
+                        <option value="12">Large Format Tile or Natural Stone</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </section>
+
+        <hr class="my-4">
+
+        <!-- shower -->
+        <section id="shower" class="py-2 bg-white px-3 rounded">
+            <h2 class="py-3">Shower</h3>
+            <div class="text-center">
+                <div class="btn-group py-2 mb-3" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="radio4" id="showerKnow" autocomplete="off" checked>
+                    <label class="btn btn-outline-mylightblue" for="showerKnow">I know the Square Footage</label>
+                
+                    <input type="radio" class="btn-check" name="radio4" id="showerKnowMeasure" autocomplete="off">
+                    <label class="btn btn-outline-mylightblue" for="showerKnowMeasure">I’m Willing to Measure</label>
+                </div>
+            </div>
+
+            <!-- div.choice 1rst -->
+            <div class="choice-1rst">               
+                <!-- tile pattern  -->
+                <div class="row align-items-center py-2">
+                    <div class="col-6 col-sm-3 col-md-3 px-2">
+                        <label for="showerKnowWall" class="form-label">Wall sq ft</label>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 px-2">
+                        <input type="number" class="form-control" name="showerKnowWall" id="showerKnowWall" value="0">
+                    </div>
+
+                    <div class="col-6 col-sm-3 col-md-3 px-2 pt-2 pt-sm-0">
+                        <label for="showerKnowFloor" class="form-label">Shower Floor sq ft</label>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 px-2 pt-2 pt-sm-0">
+                        <input type="number" class="form-control" name="showerKnowFloor" id="showerFloorWall" value="0">
+                    </div>              
+                </div>
+            </div>
+
+            <div class="choice-2nd">
+                <div class="text-center">
+                    <div class="btn-group pt-1 pb-2 mt-1" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio5" id="showerWall2" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="showerWall2">2 Walls</label>
+                    
+                        <input type="radio" class="btn-check" name="radio5" id="showerWall3" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="showerWall3">3 Walls</label>
+
+                        <input type="radio" class="btn-check" name="radio5" id="showerWall4" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="showerWall4">4 Walls</label>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-center py-2">
+
+                    <div class="col-12 m-0 py-2 px-0 showerWall">
+                        <div class="row align-items-center">
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall1width" class="form-label">Wall 1 Width (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2 pb-2">
+                                <input type="number" class="form-control" name="showerWall1width" id="showerWall1width" value="0">
+                            </div>
+                        
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall1height" class="form-label">Wall 1 Height (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <input type="number" class="form-control" name="showerWall1height" id="showerWall1height" value="0">
+                            </div> 
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-12 m-0 py-2 px-0 showerWall">
+                        <div class="row align-items-center">
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall2width" class="form-label">Wall 2 Width (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2 pb-2">
+                                <input type="number" class="form-control" name="showerWall2width" id="showerWall2width" value="0">
+                            </div>
+                    
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall2height" class="form-label">Wall 2 Height (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <input type="number" class="form-control" name="showerWall2height" id="showerWall2height" value="0">
+                            </div> 
+                        </div>
+                    </div> 
+                    
+                    
+                    <div class="col-12 m-0 py-2 px-0 showerWall" id="3ndWall" style="display: none;">
+                        <div class="row p-0 align-items-center">
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall3width" class="form-label">Wall 3 Width (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2 pb-2">
+                                <input type="number" class="form-control" name="showerWall3width" id="showerWall3width" value="0">
+                            </div>
+        
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall3height" class="form-label">Wall 3 Height (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <input type="number" class="form-control" name="showerWall3height" id="showerWall3height" value="0">
+                            </div>  
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 m-0 px-0 py-2 showerWall" id="4ndWall" style="display: none;">
+                        <div class="row p-0 align-items-center">
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall4width" class="form-label">Wall 4 Width (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2 pb-2">
+                                <input type="number" class="form-control" name="showerWall4width" id="showerWall4width" value="0">
+                            </div>
+        
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <label for="showerWall4height" class="form-label">Wall 4 Height (Inches)</label>
+                            </div>
+                            <div class="col-6 col-sm-3 col-md-3 px-2">
+                                <input type="number" class="form-control" name="showerWall4height" id="showerWall4height" value="0">
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-0 align-items-center showerFloor">
+                    <div class="col-6 col-sm-3 col-md-3 px-2">
+                        <label for="showerFloorWidth" class="form-label">Shower Floor Width</label>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 px-2 pb-2">
+                        <input type="number" class="form-control" name="showerFloorWidth" id="showerFloorWidth" value="0">
+                    </div>
+    
+                    <div class="col-6 col-sm-3 col-md-3 px-2">
+                        <label for="showerFloorLength" class="form-label">Shower Floor Length</label>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 px-2">
+                        <input type="number" class="form-control" name="showerFloorLength" id="showerFloorLength" value="0">
+                    </div>  
+                </div>
+            </div>
+
+            <!-- shower tile pattern  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Tile Pattern</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="showerTilePattern" id="showerTilePattern">
+                        <option value="0" selected>Standard - 50/50 or straight</option>
+                        <option value="17">Advanced -Diagonal, Vertical Stack, or Mixed </option>
+                        <option value="28">Complex - Herringbone or Modular</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- shower tile size  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Tile Size</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="showerTileSize" id="showerTileSize">
+                        <option value="0" selected>Standard - 12x12 or 12x24</option>
+                        <option value="17">Level 2 - Large Planks or Subway Tile</option>
+                        <option value="28">Level 3 - 48x48 and Larger or Mosaic </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- shower Niche Type  -->
+            <div class="row align-items-center pt-1 pb-2">
+                <div class="col-12 col-sm-6 col-md-2 px-2 pt-2">
+                    <div class="btn-group pt-1 pb-2 mt-1" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio6" id="showerNiche" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="showerNiche">Niche</label>
+                        
+                        <input type="radio" class="btn-check" name="radio6" id="showerShelf" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="showerShelf">Shelf</label>
+                    </div> 
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 px-2 pt-2">
+                    <div id="showerNicheTypeDiv">
+                        <select class="form-select" name="showerNicheType" id="showerNicheType">
+                            <option value="400" selected>Small Niche 12x12</option>
+                            <option value="600">Medium Niche 12x24</option>
+                            <option value="750">Large Niche</option>
+                        </select>
+                    </div>
+                    <div id="showerSelfTypeDiv" style="display: none;">
+                        <select class="form-select" name="showerShelfType" id="showerShelfType">
+                            <option value="200" selected>1 shelf</option>
+                            <option value="400">2 shelves</option>
+                            <option value="600">3 shelves</option>
+                            <option value="800">4 shelves</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 px-2 pt-2">
+                    <select class="form-select" name="showerNicheAndSelfTypePrice" id="showerNicheAndSelfTypePrice">
+                        <option value="300" selected>Corner Seat</option>
+                        <option value="300">Small Bench</option>
+                        <option value="500">Large Bench</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Will this be a curbless or zero entry shower?  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="showerType" class="form-label">Will this be a curbless or zero entry shower?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio7" id="showerType" autocomplete="off" value="0" checked>
+                        <label class="btn btn-outline-dark" for="showerType">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio7" id="showerTypeNo" autocomplete="off" value="30">
+                        <label class="btn btn-outline-dark" for="showerTypeNo">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Do you need us to remove your old shower?  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="showerType" class="form-label">Do you need us to remove your old shower?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio8" id="showerRemoveService" autocomplete="off" value="0" checked>
+                        <label class="btn btn-outline-dark" for="showerRemoveService">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio8" id="showerRemoveServiceNo" value="10" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="showerRemoveServiceNo">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Do you need us to provide the shower plumbing fixtures into this estimate?  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="showerType" class="form-label">Do you need us to provide the shower plumbing fixtures into this estimate?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio9" id="showerPlumbingFixture" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="showerPlumbingFixture">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio9" id="showerPlumbingFixtureNo" value="0" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="showerPlumbingFixtureNo">No</label>
+                    </div>
+                </div>
+
+                <div class="col-12 p-0 m-0" id="showerPlumbingFixtureDropDiv">
+                    <!-- fixture type  -->
+                    <div class="row align-items-center py-2">
+                        <div class="col-12 col-sm-6 col-md-6 px-2">
+                            <label for="formFile" class="form-label">Tile Type</label>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 px-2">
+                            <select class="form-select" name="showerFixtureType" id="showerFixtureType">
+                                <option value="400" selected>Budget Fixtures</option>
+                                <option value="600">Standard Fixtures</option>
+                                <option value="900">Luxury Fixtures</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+            <!-- Will Surface Foundry be providing the tile?  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="showerFoundry" class="form-label">Will Surface Foundry be providing the tile?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio10" id="showerFoundry" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="showerFoundry">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio10" id="showerFoundryNo" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="showerFoundryNo">No</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Foundry Tile Tp\ype  -->
+            <div class="row align-items-center py-2" id="showerFoundrySurfaceTypeDiv">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="formFile" class="form-label">Tile Type</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="showerFoundrySurfaceType" id="showerFoundrySurfaceType">
+                        <option value="4" selected>Budget Tile</option>
+                        <option value="6">Mid-Grade Tile</option>
+                        <option value="12">Large Format Tile or Natural Stone</option>
+                    </select>
+                </div>
+            </div>
+
+        </section>
+
+        <hr class="my-4">
+        
+        <!-- Full Bathroom Remodel -->
+        <section id="fullBathRemodel" class="py-2 bg-light px-3 rounded">
+            <h2 class="py-3">Remodel</h3>
+
+            <div class="row align-items-center py-2">
+                <div class="col-6 col-sm-3 col-md-3 px-2">
+                    <label for="fullBathCabinet" class="form-label">Linear feet of cabinets</label>
+                </div>
+                <div class="col-6 col-sm-3 col-md-3 px-2">
+                    <input type="number" class="form-control" name="fullBathCabinet" id="fullBathCabinet" value="0">
+                </div>
+
+                <div class="col-6 col-sm-3 col-md-3 px-2 pt-2 pt-sm-0">
+                    <label for="fullBathCabinetSelect" class="form-label">Cabinets</label>
+                </div>
+                <div class="col-6 col-sm-3 col-md-3 px-2 pt-2 pt-sm-0">
+                    <select class="form-select" name="fullBathCabinetSelect" id="fullBathCabinetSelect">
+                        <option value="400" selected>Budget</option>
+                        <option value="650">
+                            Semi-Custom</option>
+                        <option value="1050">Custom</option>
+                    </select>
+                </div>              
+            </div>
+
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label for="fullBathCabinetCountertops" class="form-label">Countertops</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <select class="form-select" name="fullBathCabinetCountertops" id="fullBathCabinetCountertops">
+                        <option value="55" selected>Remnant</option>
+                        <option value="75">Mid-Grade Natural Stone</option>
+                        <option value="105">Luxury Stone and Quartz </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Vanity Lighting  -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label class="form-label">Vanity Lighting</label>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio11" id="fullBathVanityLight" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathVanityLight">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio11" id="fullBathVanityLightNo" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathVanityLightNo">No</label>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-sm-6 col-md-6 px-2" id="fullBathVanityLightingDiv1">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio12" id="fullBathDouble" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathDouble">Double</label>
+                        
+                        <input type="radio" class="btn-check" name="radio12" id="fullBathSingle" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathSingle">Single</label>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 px-2"  id="fullBathVanityLightingDiv2">
+                    <div class="fullBathMultipleDrop">
+                        <select class="form-select" name="fullBathMultipleDropSelect" id="fullBathMultipleDropSelect">
+                            <option value="500" selected>Budget</option>
+                            <option value="850">Mid-Grade</option>
+                            <option value="1300">Luxury</option>
+                        </select>
+                    </div>
+                    <div class="fullBathSingleDrop" style="display: none;">
+                        <select class="form-select" name="fullBathSingleDropSelect" id="fullBathSingleDropSelect">
+                            <option value="25000" selected>Budget</option>
+                            <option value="425">Mid-Grade</option>
+                            <option value="650">Luxury</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vanity Mirrors -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label class="form-label">Vanity Mirrors</label>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio14" id="fullBathVanityMirrors" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathVanityMirrors">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio14" id="fullBathVanityMirrorsNo" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathVanityMirrorsNo">No</label>
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 px-2" id="fullBathVanityMirrorsDiv1">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio15" id="fullBathDoubleVanityMirrors" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathDoubleVanityMirrors">Double</label>
+                        
+                        <input type="radio" class="btn-check" name="radio15" id="fullBathSingleVanityMirrors" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathSingleVanityMirrors">Single</label>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 px-2" id="fullBathVanityMirrorsDiv2">
+                    <div class="fullBathDoubleVanityMirrorsDrop">
+                        <select class="form-select" name="fullBathDoubleVanityMirrorsSelect" id="fullBathDoubleVanityMirrorsSelect">
+                            <option value="400" selected>Budget</option>
+                            <option value="700">Mid-Grade</option>
+                            <option value="1100">Luxury</option>
+                        </select>
+                    </div>
+
+                    <div class="fullBathSingleVanityMirrorsDrop" style="display: none;">
+                        <select class="form-select" name="fullBathSingleVanityMirrorsSelect" id="fullBathSingleVanityMirrorsSelect">
+                            <option value="200" selected>Budget</option>
+                            <option value="350">Mid-Grade</option>
+                            <option value="550">Luxury</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center py-2">
+
+                <div class="col-12 col-sm-6 col-md-2 px-2">
+                    <label class="form-label">Vanity Sinks</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">                
+                        <input type="radio" class="btn-check" name="radio13" id="fullBathSingleVanitySinks" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathSingleVanitySinks">Single</label>
+
+                        <input type="radio" class="btn-check" name="radio13" id="fullBathDoubleVanitySinks" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathDoubleVanitySinks">Double</label>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 px-2" id="fullBathVanitySinksDiv1">
+                    <div class="fullBathSingleVanitySinksDrop">
+                        <select class="form-select" name="fullBathSingleVanitySinksSelect" id="fullBathSingleVanitySinksSelect">
+                            <option value="200" selected>Standard</option>
+                            <option value="400">Specialty</option>
+                        </select>
+                    </div>
+
+                    <div class="fullBathDoubleVanitySinksDrop" style="display: none;">
+                        <select class="form-select" name="fullBathDoubleVanitySinksSelect" id="fullBathDoubleVanitySinksSelect">
+                            <option value="400" selected>Standard</option>
+                            <option value="800">Specialty</option>
+                        </select>
+                    </div>
+                </div> 
+
+
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-2 px-2">
+                    <label class="form-label">Vanity Sinks Faucets</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio17" id="fullBathSingleVanitySinkFaucets" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathSingleVanitySinkFaucets">Single</label>
+                        
+                        <input type="radio" class="btn-check" name="radio17" id="fullBathDoubleVanitySinkFaucets" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathDoubleVanitySinkFaucets">Double</label>
+                    </div>
+                </div>
+                
+                <!-- Vanity Sink Faucets dropedown  -->
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="fullBathDoubleVanitySinkFaucetsDrop" style="display: none;">
+                        <select class="form-select" name="fullBathDoubleVanitySinkFaucetsSelect" id="fullBathDoubleVanitySinkFaucetsSelect">
+                            <option value="400" selected>Budget</option>
+                            <option value="700">Mid-Grade</option>
+                            <option value="1100">Luxury</option>
+                        </select>
+                    </div>
+
+                    <div class="fullBathSingleVanitySinkFaucetsDrop">
+                        <select class="form-select" name="fullBathSingleVanitySinkFaucetsSelect" id="fullBathSingleVanitySinkFaucetsSelect">
+                            <option value="200" selected>Budget</option>
+                            <option value="350">Mid-Grade</option>
+                            <option value="550">Luxury</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center py-2">
+                <!-- Tub  -->
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label class="form-label">Tub</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio18" id="fullBathTab" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathTab">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio18" id="fullBathTabNo" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathTabNo">No</label>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 px-0 py-2" id="fullBathTabDiv1">
+                    <div class="row m-0 p-0 align-items-center">
+                        <div class="col-12 col-sm-6 col-md-4 px-2">
+                            <label class="form-label">Tub</label>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 px-2">
+                            <div class="fullBathDoubleTabTabDrop">
+                                <select class="form-select" name="fullBathDoubleTabTab" id="fullBathDoubleTabTab">
+                                    <option value="900" selected>Budget</option>
+                                    <option value="1600">Mid-Grade</option>
+                                    <option value="2500">Luxury</option>
+                                    <option value="4500">Copper, Stone</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 px-0 py-2" id="fullBathTabDiv2">
+                    <div class="row m-0 p-0 align-items-center">
+                        <div class="col-12 col-sm-6 col-md-4 px-2">
+                            <label class="form-label">Tub Filler (Faucet)</label>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 px-2">
+                            <div class="fullBathDoubleTabTabFilterDrop">
+                                <select class="form-select" name="fullBathDoubleTabTabFilter" id="fullBathDoubleTabTabFilter">
+                                    <option value="1600" selected>Budget</option>
+                                    <option value="2300">Mid-Grade</option>
+                                    <option value="3200">Luxury</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Is Surface Foundry taking care of your bathroom demolition? -->
+            <div class="row align-items-center py-2">
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <label class="form-label">Is Surface Foundry taking care of your bathroom demolition?</label>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 px-2">
+                    <div class="btn-group pt-1 pb-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="radio16" id="fullBathSurfaceFoundry" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="fullBathSurfaceFoundry">Yes</label>
+                        
+                        <input type="radio" class="btn-check" name="radio16" id="fullBathSurfaceFoundryNo" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="fullBathSurfaceFoundryNo">No</label>
+                    </div>
+                </div>     
+            </div>
+            
+
+        </section>
+        
+
+        <section id="estimatePrice" class="py-2 bg-dark px-3 rounded text-center text-white mt-4">
+            <div class="row">
+                <div class="col-12 col-md-6 py-5">
+                    <h3>Estimated Price Range</h3>
+                </div>
+                <div class="col-12 col-md-6 py-5">
+                    <h3 id="estimatePriceValue"></h3>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        function mycalfun(){"bathFloor"==$("input[type=radio][name=radio1]:checked").attr("id")?(totalEveryCost=mycalfunFloor(),console.log("mycalfunFloor = "+totalEveryCost)):"bathShower"==$("input[type=radio][name=radio1]:checked").attr("id")?(totalEveryCost=mycalfunShower(),console.log("mycalfunShower = "+totalEveryCost)):"bathShower&Floor"==$("input[type=radio][name=radio1]:checked").attr("id")?(totalEveryCost=mycalfunFloor()+mycalfunShower(),console.log("mycalfunShower& = "+totalEveryCost)):"fullBath"==$("input[type=radio][name=radio1]:checked").attr("id")&&(console.log("mycalfunFullBath& = "+mycalfunFullBath()),totalEveryCost=mycalfunFloor()+mycalfunShower()+mycalfunFullBath(),totalEveryCost=parseInt(totalEveryCost)),totalEveryCost2=parseInt(1.2*totalEveryCost),$("#estimatePriceValue").html("$"+totalEveryCost+" - $"+totalEveryCost2)}function mycalfunFloor(){return floorfootage=parseFloat($("#floorfootage").val()),floor1rstcal=floorfootage<30?35:floorfootage<80?-.3*(floorfootage-30)+35:floorfootage<150?-.0714*(floorfootage-80)+20:floorfootage<500?-.0171*(floorfootage-150)+15:9,$("#bathFloorPrice").html(floor1rstcal),removeOldYes="removeOldYes"==$("input[type=radio][name=radio2]:checked").attr("id")?10*floorfootage:0,foundaryProvideYes="foundaryProvideYes"==$("input[type=radio][name=radio3]:checked").attr("id")?parseInt($("#tileType").val())*floorfootage:0,console.log(foundaryProvideYes),floor2ndcal=3*floorfootage+floor1rstcal,floor2ndcal2=floor2ndcal*parseInt($("#tilePattern").val())/100,floor2ndcal3=floor2ndcal*(parseInt($("#tilePattern").val())+parseInt($("#tileSize").val()))/100,floor2ndcal4=removeOldYes+foundaryProvideYes+3*floorfootage,totalFloorCost=floor2ndcal+floor2ndcal2+floor2ndcal3+floor2ndcal4,totalFloorCost}function mycalfunShower(){return showerTilePattern=parseInt($("#showerTilePattern").val()),showerTileSize=parseInt($("#showerTileSize").val()),showerNicheType=parseInt($("#showerNicheType").val()),showerShelfType=parseInt($("#showerShelfType").val()),showerNicheAndSelfType=parseInt($("#showerNicheAndSelfTypePrice").val()),showerNicheAndSelfTypePrice="showerNiche"==$("input[type=radio][name=radio6]:checked").attr("id")?showerNicheType+showerNicheAndSelfType:200*showerShelfType+showerNicheAndSelfType,showerTypeVal="showerKnow"==$("input[type=radio][name=radio7]:checked").attr("id")?30:0,showerRemoveService="showerRemoveService"==$("input[type=radio][name=radio8]:checked").attr("id")?10:0,showerPlumbingFixture="showerPlumbingFixture"==$("input[type=radio][name=radio9]:checked").attr("id")?parseInt($("#showerFixtureType").val()):0,showerKnowWall=showerFloorWall=0,"showerKnow"==$("input[type=radio][name=radio4]:checked").attr("id")?(showerKnowWall=parseFloat($("#showerKnowWall").val()),showerFloorWall=parseFloat($("#showerFloorWall").val())):(showerFloorWidth=parseInt($("#showerFloorWidth").val()),showerFloorLength=parseInt($("#showerFloorLength").val()),showerFloorWall=showerFloorWidth*showerFloorLength,"showerWall2"==$("input[type=radio][name=radio5]:checked").attr("id")?(showerWall1width=parseInt($("#showerWall1width").val()),showerWall1Height=parseInt($("#showerWall1Height").val()),showerWall2width=parseInt($("#showerWall2width").val()),showerWall2height=parseInt($("#showerWall2height").val()),showerKnowWall=showerWall1width*showerWall1Height+showerWall2width*showerWall2height):"showerWall3"==$("input[type=radio][name=radio5]:checked").attr("id")?(showerWall1width=parseInt($("#showerWall1width").val()),showerWall1Height=parseInt($("#showerWall1Height").val()),showerWall2width=parseInt($("#showerWall2width").val()),showerWall2height=parseInt($("#showerWall2height").val()),showerWall3width=parseInt($("#showerWall3width").val()),showerWall3height=parseInt($("#showerWall3height").val()),showerKnowWall=showerWall1width*showerWall1Height+showerWall2width*showerWall2height+showerWall3width*showerWall3Height):(showerWall1width=parseInt($("#showerWall1width").val()),showerWall1Height=parseInt($("#showerWall1Height").val()),showerWall2width=parseInt($("#showerWall2width").val()),showerWall2height=parseInt($("#showerWall2height").val()),showerWall3width=parseInt($("#showerWall3width").val()),showerWall3height=parseInt($("#showerWall3height").val()),showerWall4width=parseInt($("#showerWall4width").val()),showerWall4height=parseInt($("#showerWall4height").val()),showerKnowWall=showerWall1width*showerWall1Height+showerWall2width*showerWall2height+showerWall3width*showerWall3Height+showerWall4width*showerWall4Height)),wallPrice=35*showerKnowWall,showerFloorPrice=85*showerFloorWall,showerPrice=wallPrice+showerFloorPrice,totalShowerSqFootage=showerKnowWall+showerFloorWall,prepAndSettingCost=14*totalShowerSqFootage,showerFoundry="showerFoundry"==$("input[type=radio][name=radio10]:checked").attr("id")?parseInt($("#showerFoundrySurfaceType").val())*totalShowerSqFootage+1800:0,ExtraCal=showerPrice+(showerPrice+showerPrice*showerTilePattern/100)*showerTileSize/100+showerNicheAndSelfTypePrice,zeroEntryPrice=30*showerFloorWall,showerDemolitionPrice=totalShowerSqFootage*showerRemoveService,totalShowerCost=ExtraCal+zeroEntryPrice+showerDemolitionPrice+showerPlumbingFixture+showerFoundry+prepAndSettingCost,totalShowerCost}function mycalfunFullBath(){return fullBathCabinet=parseInt($("#fullBathCabinet").val()),fullBathCabinetSelect=parseInt($("#fullBathCabinetSelect").val()),fullBathCabinetCountertops=parseInt($("#fullBathCabinetCountertops").val()),fullBathVanityLight="fullBathVanityLight"==$("input[type=radio][name=radio1]:checked").attr("id")?"fullBathDouble"==$("input[type=radio][name=radio12]:checked").attr("id")?parseInt($("#fullBathMultipleDropSelect").val()):parseInt($("#fullBathSingleDrop").val()):0,fullBathVanityMirrors="fullBathVanityMirrors"==$("input[type=radio][name=radio14]:checked").attr("id")?"fullBathDoubleVanityMirrors"==$("input[type=radio][name=radio15]:checked").attr("id")?parseInt($("#fullBathDoubleVanityMirrorsSelect").val()):parseInt($("#fullBathSingleVanityMirrorsSelect").val()):0,fullBathSingleVanitySinks="fullBathSingleVanitySinks"==$("input[type=radio][name=radio13]:checked").attr("id")?parseInt($("#fullBathSingleVanitySinksSelect").val()):parseInt($("#fullBathDoubleVanitySinksSelect").val()),fullBathSingleVanitySinkFaucets=($("input[type=radio][name=radio17]:checked").attr("id"),parseInt($("#fullBathDoubleVanitySinkFaucetsSelect").val())),fullBathTab="fullBathTab"==$("input[type=radio][name=radio18]:checked").attr("id")?parseInt($("#fullBathDoubleTabTab").val()):0,fullBathTab="fullBathTab"==$("input[type=radio][name=radio18]:checked").attr("id")?parseInt($("#fullBathDoubleTabTabFilter").val()):0,fullBathSurfaceFoundry="fullBathSurfaceFoundry"==$("input[type=radio][name=radio16]:checked").attr("id")?50*fullBathCabinet:0,fullBathExtraCal1=fullBathCabinet*fullBathCabinetSelect,fullBathExtraCal2=2.5*fullBathCabinet*fullBathCabinetCountertops,fullBathExtraCal3=fullBathVanityLight+fullBathVanityMirrors+fullBathSingleVanitySinks+fullBathSingleVanitySinkFaucets+fullBathTab+fullBathSurfaceFoundry+2400,fullBathContractPrice=240*fullBathCabinet,totalFullBathRemodelCost=fullBathExtraCal1+fullBathExtraCal2+fullBathExtraCal3+fullBathContractPrice,totalFullBathRemodelCost}floor1rstcal=0,wallPrice=showerWall=totalFloorCost=totalShowerCost=totalFullBathRemodelCost=totalEveryCost=totalEveryCost2=0,$(document).ready(function(){$("input").on("input",function(e){mycalfun()}),$("select").on("input",function(e){mycalfun()}),mycalfun()}),$("input[type=radio][name=radio1]").change(function(){"bathFloor"==$(this).attr("id")?($("#floor").show(),$("#shower").hide(),$("#fullBathRemodel").hide()):"bathShower"==$(this).attr("id")?($("#floor").hide(),$("#shower").show(),$("#fullBathRemodel").hide()):"bathShower&Floor"==$(this).attr("id")?($("#floor").show(),$("#shower").show(),$("#fullBathRemodel").hide()):($("#floor").show(),$("#shower").show(),$("#fullBathRemodel").show())}),$("input[type=radio][name=radio4]").change(function(){"showerKnowMeasure"==$(this).attr("id")?($(".choice-1rst").hide(),$(".choice-2nd").show()):($(".choice-1rst").show(),$(".choice-2nd").hide())}),$("input[type=radio][name=radio5]").change(function(){"showerWall2"==$(this).attr("id")?($("#3ndWall").hide(),$("#4ndWall").hide()):"showerWall3"==$(this).attr("id")?($("#3ndWall").show(),$("#4ndWall").hide()):($("#3ndWall").show(),$("#4ndWall").show())}),$("input[type=radio][name=radio6]").change(function(){"showerNiche"==$(this).attr("id")?($("#showerNicheTypeDiv").show(),$("#showerSelfTypeDiv").hide()):($("#showerNicheTypeDiv").hide(),$("#showerSelfTypeDiv").show())}),$("input[type=radio][name=radio11]").change(function(){"fullBathVanityLightNo"==$(this).attr("id")?($("#fullBathVanityLightingDiv1").hide(),$("#fullBathVanityLightingDiv2").hide()):($("#fullBathVanityLightingDiv1").show(),$("#fullBathVanityLightingDiv2").show())}),$("input[type=radio][name=radio12]").change(function(){"fullBathSingle"==$(this).attr("id")?($(".fullBathMultipleDrop").hide(),$(".fullBathSingleDrop").show()):($(".fullBathMultipleDrop").show(),$(".fullBathSingleDrop").hide())}),$("input[type=radio][name=radio14]").change(function(){"fullBathVanityMirrorsNo"==$(this).attr("id")?($("#fullBathVanityMirrorsDiv1").hide(),$("#fullBathVanityMirrorsDiv2").hide()):($("#fullBathVanityMirrorsDiv1").show(),$("#fullBathVanityMirrorsDiv2").show())}),$("input[type=radio][name=radio15]").change(function(){"fullBathSingleVanityMirrors"==$(this).attr("id")?($(".fullBathDoubleVanityMirrorsDrop").hide(),$(".fullBathSingleVanityMirrorsDrop").show()):($(".fullBathDoubleVanityMirrorsDrop").show(),$(".fullBathSingleVanityMirrorsDrop").hide())}),$("input[type=radio][name=radio13]").change(function(){"fullBathSingleVanitySinks"==$(this).attr("id")?($(".fullBathSingleVanitySinksDrop").show(),$(".fullBathDoubleVanitySinksDrop").hide()):($(".fullBathSingleVanitySinksDrop").hide(),$(".fullBathDoubleVanitySinksDrop").show())}),$("input[type=radio][name=radio17]").change(function(){"fullBathSingleVanitySinkFaucets"==$(this).attr("id")?($(".fullBathDoubleVanitySinkFaucetsDrop").hide(),$(".fullBathSingleVanitySinkFaucetsDrop").show()):($(".fullBathDoubleVanitySinkFaucetsDrop").show(),$(".fullBathSingleVanitySinkFaucetsDrop").hide())}),$("input[type=radio][name=radio18]").change(function(){"fullBathTab"==$(this).attr("id")?($("#fullBathTabDiv1").show(),$("#fullBathTabDiv2").show()):($("#fullBathTabDiv1").hide(),$("#fullBathTabDiv2").hide())}),$("input[type=radio][name=radio9]").change(function(){"showerPlumbingFixture"==$(this).attr("id")?$("#showerPlumbingFixtureDropDiv").show():$("#showerPlumbingFixtureDropDiv").hide()}),$("input[type=radio][name=radio3]").change(function(){"foundaryProvideYes"==$(this).attr("id")?$("#tileTypeDiv").show():$("#tileTypeDiv").hide()}),$("input[type=radio][name=radio10]").change(function(){"showerFoundry"==$(this).attr("id")?$("#showerFoundrySurfaceTypeDiv").show():$("#showerFoundrySurfaceTypeDiv").hide()});
+    </script>
+
+</body>
+</html>
